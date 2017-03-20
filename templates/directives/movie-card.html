@@ -1,0 +1,17 @@
+<div class="movie--card_picture">
+	<img ng-src="{{ config.base_url + config.poster_sizes[3] + movie.poster_path }}" alt="">
+</div>
+
+<div class="movie--card_content">
+	<h3 class="movie--card_title">{{ movie.title }}</h3>
+
+	<div class="movie--card_meta">
+		<span class="movie--card_year">Sortie : {{ movie.release_date | date: 'yyyy' }}</span>
+	</div>
+</div>
+
+<div class="movie--card_view">
+	<a ng-href="#!/view/{{ movie.id }}">
+		<span class="button">Voir la fiche</span>
+	</a>
+</div>

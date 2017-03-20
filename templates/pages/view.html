@@ -1,0 +1,13 @@
+<div class="movie--view" ng-controller="ViewController as view">
+	<a ng-href="#!/" class="movie--back">Retour</a>
+	
+	<div class="movie--view_poster">
+		<img ng-src="{{ config.base_url + config.poster_sizes[3] + view.poster_path }}" alt="">
+	</div>
+	
+	<h1 class="movie--view_title">{{ view.title }}</h1>
+	
+	<div class="movie--view_desc">
+		{{ view.overview }}
+	</div>
+</div>

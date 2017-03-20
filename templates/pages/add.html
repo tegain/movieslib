@@ -1,0 +1,28 @@
+<div class="movie--search" ng-controller="SearchController as search">
+	<a ng-href="#!/" class="movie--back">Retour</a>
+	
+	
+	<button ng-click="getSession()">Get Session</button>
+	
+	<div ng-show="login.success">
+		<form name="search.searchForm" ng-submit="search(query)" novalidate>
+			<input type="text" name="searchInput" ng-model="query">
+			<button type="submit">Chercher</button>
+		</form>
+
+		<div class="movie--search_results">
+			<article ng-repeat="result in search.results" data-movie-id="{{result.id}}">
+				<img ng-src="{{ config.base_url + config.poster_sizes[2] + result.poster_path }}" alt="">
+				<h3>{{ result.title }}</h3>
+				<span>{{ result.release_date | date: 'yyyy' }}</span>
+				<div>{{ result.overview | limitTo: 140 }}<span ng-if="result.overview.length > 140">...</span></div>
+
+				<!-- Add -->
+				<div>
+					<button ng-click="add(result.id)">Ajouter</button>
+				</div>
+			</article>
+		</div>
+	</div>
+	
+</div>
