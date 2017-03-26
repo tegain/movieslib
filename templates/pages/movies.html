@@ -1,12 +1,19 @@
 <div class="movies--container" ng-controller="MoviesController as movies">			
-	<h1>Films :: Bibliothèque</h1>	
 	
-	<div class="movies--list">
-		<article class="movie--card" ng-repeat="movie in movies">
-			<movie-card></movie-card>
+	<div class="movies--latest">
+		<article class="movie--card_latest" ng-repeat="movie in movies | toArray | orderBy: '-release_date' | limitTo: 1">
+			<movie-card-latest></movie-card-latest>
 		</article>
 	</div>
+	
+	<div class="movies--list swiper-container">
+		<div class="swiper-wrapper">
+			<article class="movie--card swiper-slide" ng-repeat="movie in movies">
+				<movie-card></movie-card>
+			</article>
+		</div>
+	</div>
 	<p>
-		<a ng-click="initToken()" target="_blank">Ajouter des films</a>
+		<a ng-href="/add">Ajouter des films</a>
 	</p>
 </div>

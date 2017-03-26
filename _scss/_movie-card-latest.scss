@@ -1,0 +1,99 @@
+.movie--card_latest {
+	position: relative;
+	padding-left: 3rem;
+	padding-right: 1rem;
+	margin-bottom: 2rem;
+	
+	& > movie-card-latest {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: $dark-color;
+		box-shadow: 0 1rem 1rem rgba($dark-color, .4);
+		//overflow: hidden;
+		border-radius: .5rem;
+		padding-bottom: 2rem; // Pour le bouton
+	}
+	
+	& .movie--card_background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: .1;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		z-index: 0;
+	}
+	
+	& .movie--card_title {
+		max-width: 80%;
+		margin-top: 0;
+		margin-bottom: .5rem;
+		
+		font-weight: normal;
+		font-size: 1.9rem;
+		line-height: 1;
+		color: #fff;
+		font-family: 'Giza', Roboto, sans-serif;
+		text-shadow: 0 .2rem .3rem rgba(#000, .3);
+		transform: translate(-3rem, 0);
+	}
+	
+	& .movie--card_picture {
+		width: 38%;
+		float: right;
+		padding-right: 1rem;
+		transform: translate(0, -1rem);
+		border-radius: 2px;
+		overflow: hidden;
+		
+		& img {
+			max-width: 100%;
+			max-height: 210px;
+		}
+	}
+	
+	& .movie--card_text {
+		padding: 1rem;
+		color: #fff;
+		
+		& .movie--card_overview {
+			font-size: .9rem;
+			max-width: 60%;
+		}
+	}
+	
+	& .movie--card_actions {
+		text-align: right;
+		//transform: translate(0, -2rem);
+		
+		& > a {
+			position: absolute;
+			left: 1rem;
+			bottom: 1rem;
+			text-decoration: none;
+			
+			& path {
+				transition: .25s;
+			}
+			
+			& em {
+				display: none;
+			}
+
+			&:hover path {
+				fill: #fff !important;
+			}
+		}
+
+	}
+	
+	& .movie--card_inner {
+		height: 100%;
+	}
+
+}

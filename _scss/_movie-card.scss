@@ -1,68 +1,60 @@
 .movie--card {
 	position: relative;
-	padding-left: .5rem;
-	padding-right: .5rem;
-	flex: 1 0 auto;
+	//padding-left: .5rem;
+	//padding-right: .5rem;
+	margin-bottom: .75rem;
+	width: 35vw;
+	height: 55vw;
 	
 	& > movie-card {
 		display: block;
-		background: #fff;
-		box-shadow: 0 .5rem 1.5rem rgba($dark-color, .2);
-		border-radius: 2px;
+		width: 100%;
+		height: 100%;
+		background: $dark-color;
+		box-shadow: 0 .5rem 2.5rem rgba($dark-color, .5);
 		overflow: hidden;
+		border-radius: .5rem;
 	}
+
 	
-	@media screen and (min-width: 768px) {
-		flex: 0 0 50%;
-	}
-	@media screen and (min-width: 1024px) {
-		flex: 0 0 33.33%;
-		width: 33.33%;
-	}
-	@media screen and (min-width: 1200px) {
-		flex: 0 0 25%;
-		width: 25%;
-	}
-	
-	&_title {
+	& .movie--card_title {
 		margin-top: 0;
+		color: #fff;
 	}
 	
-	&_picture {
-		//background: #1a161f;
+	& .movie--card_picture {
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		
 		& img {
-			max-width: 100%;
+			display: none;
+			object-fit: fill;
+			object-position: 50% 50%;
+			//max-width: 100%;
 		}
 	}
 	
-	&_content {
+	& .movie--card_text {
 		padding: 1rem;
 	}
 	
-	&_view {
+	& .movie--card_actions {
 		text-align: center;
 		
 		& > a {
-			&:before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 2;
-			}
-			& .button {
-				border-radius: 0;
+			text-decoration: none;
+			border: none;
 
-				@media screen and (min-width: 1024px) {
-					width: 100%;
-				}
-			}
-			&:hover .button {
+			&:hover {
 				background: $main-color;
 			}
 		}
-		
+
+	}
+	
+	& .movie--card_inner {
+		height: 100%;
 	}
 }

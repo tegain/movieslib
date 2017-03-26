@@ -1,7 +1,10 @@
 $main-color: #8f859b;
 $dark-color: #0f0915;
-$red-color: #d44f4b;
+$red-color: #e80269;
 
 @import "normalize";
 @import "layout";
+@import "movies-list";
 @import "movie-card";
+@import "movie-card-latest";
+@import "movie-view";

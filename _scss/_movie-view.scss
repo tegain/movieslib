@@ -1,0 +1,22 @@
+.movie--view {
+	background: #1f192a;
+	
+	&_backdrop {
+		height: 80vh;
+		position: relative;
+		background: $dark-color;
+		
+		& .movie--backdrop_picture {
+			opacity: .4;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 0;
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: cover;
+		}
+	}
+}

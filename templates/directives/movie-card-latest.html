@@ -1,0 +1,30 @@
+<div class="movie--card_inner">
+	<div class="movie--card_background" style="background-image: url({{ config.base_url + config.backdrop_sizes[1] + movie.backdrop_path }})"></div>
+	<div class="movie--card_picture">
+		<img ng-src="{{ config.base_url + config.poster_sizes[3] + movie.poster_path }}" alt="">
+	</div>
+
+	<div class="movie--card_text">
+		<h2 class="movie--card_title">{{ movie.title }}</h2>
+
+		<div class="movie--card_overview">
+			<p>{{ movie.overview | limitTo: 80 }}<span ng-if="movie.overview.length > 80">...</span></p>
+		</div>
+		
+		<div class="movie--card_actions">
+			<a ng-href="/view/{{ movie.id }}" class="movie--card_view button">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="10px" viewBox="0 0 22 15">
+					<path fill="#E80269" d="M11,0C6,0,1.729,3.11,0,7.5C1.729,11.89,6,15,11,15s9.271-3.11,11-7.5C20.271,3.11,16.005,0,11,0z M11,12.5
+					c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5S13.76,12.5,11,12.5z M11,4.5c-1.655,0-3,1.345-3,3s1.345,3,3,3s3-1.345,3-3
+					S12.655,4.5,11,4.5z"/>
+				</svg>
+
+				<span>Voir <em>le détail</em></span>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+	
+	<!--<button ng-click="removeMovie(movie.id)" class="movie--card_remove button">Sup</button>-->

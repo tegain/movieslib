@@ -1,5 +1,11 @@
 <div class="movie--view" ng-controller="ViewController as view">
-	<a ng-href="#!/" class="movie--back">Retour</a>
+	<a ng-href="/" class="header--btn movie--back" data-label="Retour">
+		<img src="img/icon_back.svg" alt="Login" width="25" height="25">
+	</a>
+	
+	<div class="movie--view_backdrop">
+		<div class="movie--backdrop_picture" style="background-image: url({{ config.base_url + config.backdrop_sizes[2] + view.backdrop_path }})"></div>
+	</div>
 	
 	<div class="movie--view_poster">
 		<img ng-src="{{ config.base_url + config.poster_sizes[3] + view.poster_path }}" alt="">

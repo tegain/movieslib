@@ -1,0 +1,15 @@
+.movies--container {
+	padding-top: 6rem;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 55vw;
+	
+	& .swiper-slide {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

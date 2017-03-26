@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Giza';
+    src: url('/fonts/giza-webfont.woff2') format('woff2'),
+         url('/fonts/giza-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 *,
 *:before,
 *:after {
@@ -7,11 +15,10 @@
 }
 
 body {
-    background: $dark-color url('../img/bg.jpg') 50% 0 no-repeat;
+    background: $dark-color url('../img/bg_mobile.jpg') 50% 0 no-repeat;
     background-size: 100% auto;
-    padding-top: 6rem;
-	padding-left: .2rem;
-	padding-right: .2rem;
+	//padding-left: 20px;
+	//padding-right: 20px;
     
     font-family: 'Raleway', sans-serif;
     color: $main-color;
@@ -21,11 +28,11 @@ body {
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 1rem;
+	//padding: 1rem;
 }
 
 .app {
-	background: #1a161f;
+	/*background: #1a161f;
 	border-radius: .2rem .2rem 0 0;
 	box-shadow: 0 2rem 3.5rem .9rem rgba(#000, .5);
 	
@@ -37,11 +44,66 @@ body {
 	}
 	@media screen and (min-width: 1200px) {
 		padding: 6rem;
+	}*/
+}
+
+.header--btn {
+	padding: 0;
+	background: none;
+	width: 40px;
+	height: 40px;
+	transition: .25s;
+	
+	&:hover {
+		background: rgba(#fff, .1);
+	}
+	
+	& img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	
+	&.app--login {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 5;
+	}
+	
+	&.app--search {
+		position: absolute;
+		top: 10px;
+		right: 50px;
+		z-index: 5;
+	}
+	
+	&.movie--back {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		z-index: 5;
+		
+		&:after {
+			display: none;
+			content: attr(data-label);
+			position: absolute;
+			left: 50px;
+			top: 50%;
+			transform: translate(0, -50%);
+			
+			font-size: .7rem;
+			text-transform: uppercase;
+			font-weight: 700;
+			letter-spacing: .2rem;
+			color: #fff;
+		}
 	}
 }
 
 .movies--list {
-	display: flex;
+	//display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	
@@ -88,20 +150,31 @@ h1 {
 	}
 }
 
+h3 {
+	font-size: 1.75rem;
+	margin-bottom: .5rem;
+}
+
+button {
+	border: none;
+}
+
 .button {
 	display: inline-block;
-	margin-top: 1.5rem;
-	padding: .75rem 1rem;
-	border-radius: 2px;
-	background: $red-color;
 	
-	color: #fff;
+	padding: .5rem 1rem;
+	border: 2px solid $red-color;
+	border-radius: 1.5rem;
+	transition: .25s;
+	
+	color: $red-color;
 	text-transform: uppercase;
 	font-size: .8rem;
 	font-weight: 700;
 	text-decoration: none;
 	
 	&:hover {
-		background: $main-color;
+		background: $red-color;
+		color: #fff;
 	}
 }
