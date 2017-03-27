@@ -1,7 +1,6 @@
 angular
 	.module('moviesList')
-	//.config([, function ($locationProvider) { $locationProvider.hashPrefix(''); }])
-	.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+	.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function ($routeProvider, $locationProvider, $sceDelegateProvider) {
 		
 		$routeProvider
 			.when('/', {
@@ -20,5 +19,12 @@ angular
 		
 		$locationProvider.html5Mode(true);
 		$locationProvider.hashPrefix('');
+		
+		// Ajoute Youtube embed à la whitelist pour éviter l'erreur
+		// 'Error: $interpolate:interr Interpolation Error'
+		$sceDelegateProvider.resourceUrlWhitelist([
+			'self',
+			"https://www.youtube.com/embed/**"
+		]);
 	}]);
 	

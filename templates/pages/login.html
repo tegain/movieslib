@@ -6,20 +6,20 @@
 		<img src="img/icon_back.svg" alt="Login" width="25" height="25">
 	</a>
 	
-	<form action="/login" class="login--form">
+	<form action="/login" class="login--form" novalidate>
 		<div class="form--row">
+			<input id="login-id" name="login-id" type="text">
 			<label for="login-id">Identifiant</label>
-			<input id="login-id" type="text">
 		</div>
 		
 		<div class="form--row">
+			<input id="login-pwd" name="login-pwd" type="password">
 			<label for="login-pwd">Mot de passe</label>
-			<input id="login-pwd" type="text">
 		</div>
 		
 		<div class="form--submit">
 			<button type="submit">
-				Connexion
+				<span>Connexion</span>
 			</button>
 		</div>
 	</form>

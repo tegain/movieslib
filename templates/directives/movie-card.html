@@ -1,4 +1,4 @@
-<div class="movie--card_inner">
+<div class="movie--card_inner" data-movie-id="{{ movie.id }}">
 	<div class="movie--card_picture" style="background-image: url({{ config.base_url + config.poster_sizes[3] + movie.poster_path }})">
 		<img ng-src="{{ config.base_url + config.poster_sizes[3] + movie.poster_path }}" alt="">
 	</div>
@@ -9,6 +9,6 @@
 </div>
 
 <div class="movie--card_actions">
-	<a ng-href="/view/{{ movie.id }}" class="movie--card_view button">Voir <em>le détail</em></a>
+	<a ng-href="/view/{{ movie.id }}" class="movie--card_view button"><span class="cover"></span> Voir <em>le détail</em></a>
 	<!--<button ng-click="removeMovie(movie.id)" class="movie--card_remove button">Sup</button>-->
 </div>

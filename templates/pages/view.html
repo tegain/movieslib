@@ -1,19 +1,58 @@
-<div class="movie--view" ng-controller="ViewController as view">
+<div class="movie--view" ng-controller="ViewController as view" data-movie-id="{{ view.id }}">
 	<a ng-href="/" class="header--btn movie--back" data-label="Retour">
 		<img src="img/icon_back.svg" alt="Login" width="25" height="25">
 	</a>
 	
 	<div class="movie--view_backdrop">
+		<a class="btn--watchTrailer" href="#movie-videos">
+			<img src="/img/icon_play.svg" alt="" width="60" height="60">
+			<span>Voir le trailer</span>
+		</a>
 		<div class="movie--backdrop_picture" style="background-image: url({{ config.base_url + config.backdrop_sizes[2] + view.backdrop_path }})"></div>
+		
+		<h1 class="movie--view_title">{{ view.title }}</h1>
+		
+		<div class="movie--view_poster">
+			<img ng-src="{{ config.base_url + config.poster_sizes[3] + view.poster_path }}" alt="">
+		</div>
 	</div>
 	
-	<div class="movie--view_poster">
-		<img ng-src="{{ config.base_url + config.poster_sizes[3] + view.poster_path }}" alt="">
+	<div class="movie--view_content">
+		<button class="btn--addToSeen button"><span>Déjà vu</span></button>
+	
+		<div class="movie--view_meta">
+			<ul>
+				<li>Année de sortie : {{ view.release_date | date: 'yyyy' }}</li>
+				<li>Titre original : {{ view.original_title }}</li>
+			</ul>
+		</div>
+
+		<div class="movie--view_desc">
+			<h2>Résumé</h2>
+			{{ view.overview }}
+		</div>
+	</div>
+
+	<div class="movie--view_actors swiper-container">
+		<h2>Acteurs</h2>
+		<ul class="swiper-wrapper">
+			<li class="actor--thumb swiper-slide" ng-repeat="actor in getActors.cast">
+				<span class="actor--thumb_picture" style="background-image: url({{ config.base_url + config.profile_sizes[1] + actor.profile_path }})"></span>
+				<strong class="actor--thumb_name">{{ actor.name }}</strong>
+			</li>
+		</ul>
 	</div>
 	
-	<h1 class="movie--view_title">{{ view.title }}</h1>
+	<div class="movie--view_videos" id="movie-videos">
+		<h2>Vidéos</h2>
+		<div class="iframe--container">
+			<iframe width="100%" height="315" ng-src="{{ videoUrl }}" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
 	
-	<div class="movie--view_desc">
-		{{ view.overview }}
+	<div class="movie--view_remove">
+		<button class="btn--removeMovie button" ng-click="removeMovie(view.id)">
+			<span>Supprimer</span>
+		</button>
 	</div>
 </div>

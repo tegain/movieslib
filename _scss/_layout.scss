@@ -17,11 +17,20 @@
 body {
     background: $dark-color url('../img/bg_mobile.jpg') 50% 0 no-repeat;
     background-size: 100% auto;
-	//padding-left: 20px;
-	//padding-right: 20px;
+	background-attachment: fixed;
     
     font-family: 'Raleway', sans-serif;
     color: $main-color;
+	
+	@media screen and (min-width: 640px) {
+		background-image: url('../img/bg_medium.jpg');
+		background-size: 1280px auto;
+		
+	}
+	@media screen and (min-width: 1280px) {
+		background-image: url('../img/bg_large.jpg');
+		background-size: 100% auto;
+	}
 }
 
 .row {
@@ -131,14 +140,19 @@ footer {
 }
 
 h1 {
+	width: 100%;
 	margin-top: 0;
 	margin-bottom: 2rem;
 	
 	text-align: center;
-	text-transform: uppercase;
-	letter-spacing: .2rem;
-	font-size: 1.4rem;
-	color: $red-color;
+	letter-spacing: .08rem;
+	font-weight: normal;
+	font-size: 2.8rem;
+	line-height: 1;
+	color: #fff;
+	font-family: 'Giza', Roboto, sans-serif;
+	text-shadow: 0 .2rem .3rem rgba(#000, .3);
+	
 	
 	@media screen and (min-width: 768px) {
 		font-size: 2rem;
@@ -176,5 +190,21 @@ button {
 	&:hover {
 		background: $red-color;
 		color: #fff;
+	}
+}
+
+.iframe--container {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	
+	& iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 }
