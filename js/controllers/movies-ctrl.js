@@ -22,10 +22,10 @@ angular
 
 	$scope.removeMovie = function (movieId) {
 		ManageMovie.remove(movieId);
-		console.log('supprimé');
+		//console.log('supprimé');
 	};
 
-	var moviesSwiper = new Swiper ('.swiper-container', {
+	var moviesSwiper = new Swiper ('.movies--list', {
 		initialSlide: 1,
 		slidesPerView: 'auto',
 		centeredSlides: true,

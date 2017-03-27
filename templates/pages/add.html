@@ -1,13 +1,21 @@
 <div class="movie--search" ng-controller="SearchController as searchCtrl">
-	<a ng-href="/" class="movie--back">Retour</a>
-	
-	
-	<!--<button ng-click="getSession()">Get Session</button>-->
+	<a ng-href="/" class="header--btn movie--back" data-label="Retour">
+		<img src="img/icon_back.svg" alt="Login" width="25" height="25">
+	</a>
 	
 	<div>
+		<h1>Ajouter un film</h1>
+	
 		<form name="searchForm" ng-submit="searchMovie(query)" novalidate>
-			<input type="text" name="searchInput" ng-model="query">
-			<button type="submit">Chercher</button>
+			<div class="form--row">
+				<input type="text" name="searchInput" ng-model="query" id="search-field" class="search-field">
+				<label for="search-field">Chercher un film</label>
+			</div>
+			<div class="form--submit">
+				<button type="submit">
+					<span>Chercher</span>
+				</button>
+			</div>
 		</form>
 
 		<div class="movie--search_results">
