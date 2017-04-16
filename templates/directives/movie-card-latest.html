@@ -7,8 +7,8 @@
 	<div class="movie--card_text">
 		<h2 class="movie--card_title">{{ movie.title }}</h2>
 
-		<div class="movie--card_overview">
-			<p>{{ movie.overview | limitTo: 80 }}<span ng-if="movie.overview.length > 80">...</span></p>
+		<div class="movie--card_overview" data-excerpt-length="{{ exerptLength() }}">
+			<p>{{ movie.overview | limitTo: exerptLength() }}<span ng-if="movie.overview.length > exerptLength()">...</span></p>
 		</div>
 		
 		<div class="movie--card_actions">
@@ -24,7 +24,3 @@
 		</div>
 	</div>
 </div>
-
-
-	
-	<!--<button ng-click="removeMovie(movie.id)" class="movie--card_remove button">Sup</button>-->

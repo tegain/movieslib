@@ -4,12 +4,15 @@ angular
 
 	return {
 
-		add: function (movieId) {
+		/**
+		 * Adds a movie to the library by its ID
+		 * 
+		 * @doc: https://developers.themoviedb.org/3/lists/add-movie
+		 */
+		add: function (movieId, callback) {
 			var movieData = JSON.stringify({
 				"media_id": movieId
 			});
-
-			console.log(movieData);
 
 			$http({
 				method: 'POST',
@@ -22,22 +25,32 @@ angular
 			.then(
 				function success(response) {
 					return response.data;
-					console.log(response.data);
+
+					/**
+					 * Executes callback function after adding movie, if there is one
+					 */
+					if (callback) {
+						callback;
+					}
 				},
 				function fail(response) {
-					//$scope.data = response.data || 'Request failed';
 					return response.data || 'Request failed';
-					console.log(response.data);
+					console.error(response.data);
 				}
 			);
 		},
 
-		remove: function (movieId) {
+		/**
+		 * Removes a movie from library by its ID
+		 * @param movieId -> movie ID
+		 * @param callback -> callback function to be executed after removing movie
+		 * 
+		 * @doc: https://developers.themoviedb.org/3/lists/remove-movie
+		 */
+		remove: function (movieId, callback) {
 			var movieData = JSON.stringify({
 				"media_id": movieId
 			});
-
-			console.log(movieData);
 
 			$http({
 				method: 'POST',
@@ -50,19 +63,56 @@ angular
 			.then(
 				function success(response) {
 					return response.data;
-					console.log(response.data);
+
+					/**
+					 * Executes callback function after removing movie, if there is one
+					 */
+					if (callback) {
+						callback;
+					}
 				},
 				function fail(response) {
-					//$scope.data = response.data || 'Request failed';
 					return response.data || 'Request failed';
-					console.log(response.data);
+					console.error(response.data);
 				}
 			);
 		},
 
-		markAsSeen: function (movieId) {
-			// Pour les films déjà vus
-		}
+		/**
+		 * Mark a movie as already seen (uses Local Storage)
+		 * Adds a unique key to Local Storage containing movie ID.
+		 * 
+		 * Toggle the 'Seen' state by adding or removing key from Local Storage)
+		 * 
+		 * @param movieId -> movie ID
+		 * @param container -> DOM element (css selector) to add attribute for CSS purpose
+		 */
+		markAsSeen: function (movieId, container) {
+			if (!localStorage.getItem('alreadySeen-'+ movieId)) {
+				localStorage.setItem('alreadySeen-'+ movieId, true);
+				document.querySelector(container).setAttribute('data-seen', true);
+				//console.log('Film '+ movieId +' ajouté à la liste des films déjà vus !');
+			}
+			else {
+				localStorage.removeItem('alreadySeen-'+ movieId);
+				document.querySelector(container).removeAttribute('data-seen');
+				//console.log('Film '+ movieId +' retiré à la liste des films déjà vus !');
+			}
+		},
+		
+		/**
+		 * Checks for movie's key in Local Storage
+		 * @returns TRUE if the movie is already marked as 'Seen' 
+		 */
+		getSeenInfos: function (movieId) {
+			if (localStorage.getItem('alreadySeen-'+ movieId)) {
+				return true
+			}
+			else {
+				return false
+			}
+		},
+
 
 	}
 }]);

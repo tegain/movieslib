@@ -29,6 +29,10 @@ form {
 			//color: #7b5ea1;
 			color: rgba(#fff, .4);
 			text-transform: uppercase;
+
+			@include bp(laptop) {
+				color: #fff;
+			}
 		}
 		& input {
 			position: relative;
@@ -42,6 +46,7 @@ form {
 					outline: none;
 				}
 		}
+		& input.ng-not-empty + label,
 		& input:focus + label {
 			top: -.75rem;
 			color: #fff;
@@ -62,7 +67,7 @@ form {
 			width: 100%;
 			overflow: hidden;
 			padding: 1rem 2rem;
-			border-radius: 2rem;
+			border-radius: 4rem;
 			background: #440b56;
 			position: relative;
 			box-shadow: 0 .75rem 1rem rgba(#000, .2);
@@ -80,10 +85,10 @@ form {
 				content: "";
 				position: absolute;
 				z-index: 0;
-				width: 120%;
+				width: 125%;
 				height: 0;
-				padding-bottom: 120%;
-				margin-left: -35%;
+				padding-bottom: 125%;
+				margin-left: -40%;
 				margin-top: -45%;
 				
 				background: #dc0b8f;

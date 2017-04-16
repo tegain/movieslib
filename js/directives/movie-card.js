@@ -1,5 +1,5 @@
 /**
-* App Directive :: Template pour chaque film
+* App Directive :: Movie card template
 */
 angular
 	.module('moviesList')

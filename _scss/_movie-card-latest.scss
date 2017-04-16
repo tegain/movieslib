@@ -1,3 +1,7 @@
+/**
+* BIG MOVIE CARD
+*/
+
 .movie--card_latest {
 	position: relative;
 	padding-left: 3rem;
@@ -11,7 +15,6 @@
 		height: 100%;
 		background: $dark-color;
 		box-shadow: 0 1rem 1rem rgba($dark-color, .4);
-		//overflow: hidden;
 		border-radius: .5rem;
 		padding-bottom: 2rem; // Pour le bouton
 	}
@@ -27,6 +30,27 @@
 		background-repeat: no-repeat;
 		background-position: 50% 50%;
 		z-index: 0;
+
+		@include bp(tablet) {
+			opacity: .4;
+			border-radius: .45rem;
+			overflow: hidden;
+
+			&:before {
+				content: "";
+				position: absolute;
+				z-index: 2;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 60%;
+				background: $dark-color;
+				background: -moz-linear-gradient(left,  rgba($dark-color,1) 0%, rgba($dark-color,1) 33%, rgba($dark-color,0) 100%);
+				background: -webkit-linear-gradient(left,  rgba($dark-color,1) 0%,rgba($dark-color,1) 33%,rgba($dark-color,0) 100%);
+				background: linear-gradient(to right,  rgba($dark-color,1) 0%,rgba($dark-color,1) 33%,rgba($dark-color,0) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f0915', endColorstr='#000f0915',GradientType=1 );
+			}
+		}
 	}
 	
 	& .movie--card_title {
@@ -41,6 +65,11 @@
 		font-family: 'Giza', Roboto, sans-serif;
 		text-shadow: 0 .2rem .3rem rgba(#000, .3);
 		transform: translate(-3rem, 0);
+
+		@include bp(tablet) {
+			transform: translate(0, 0);
+			font-size: 2.4rem;
+		}
 	}
 	
 	& .movie--card_picture {
@@ -50,50 +79,91 @@
 		transform: translate(0, -1rem);
 		border-radius: 2px;
 		overflow: hidden;
+
+		@include bp(tablet) {
+			width: auto;
+			max-width: 20%;
+			transform: translate(0, 2rem);
+		}
 		
 		& img {
 			max-width: 100%;
 			max-height: 210px;
+
+			@include bp(laptop) {
+				max-height: 100%;
+			}
 		}
 	}
 	
 	& .movie--card_text {
 		padding: 1rem;
 		color: #fff;
-		
-		& .movie--card_overview {
-			font-size: .9rem;
-			max-width: 60%;
+
+		@include bp(tablet) {
+			padding: 3rem;
 		}
+
+		@include bp(laptop) {
+			max-width: 60%;
+			line-height: 1.4;
+		}
+	}
+
+	& .movie--card_overview {
+		font-size: .9rem;
+		max-width: 60%;
 	}
 	
 	& .movie--card_actions {
 		text-align: right;
-		//transform: translate(0, -2rem);
 		
 		& > a {
 			position: absolute;
 			left: 1rem;
 			bottom: 1rem;
+			z-index: 2;
 			text-decoration: none;
+
+			@include bp(tablet) {
+				left: 3rem;
+				bottom: 3rem;
+			}
 			
 			& path {
+				fill: $red-color;
 				transition: .25s;
 			}
 			
 			& em {
 				display: none;
+
+				@include bp(tablet) {
+					display: inline;
+					font-style: normal;
+				}
 			}
 
 			&:hover path {
 				fill: #fff !important;
 			}
 		}
-
 	}
 	
 	& .movie--card_inner {
 		height: 100%;
 	}
 
+	@include bp(tablet) {
+		height: 320px;
+		padding: 1rem;
+	}
+
+	@include bp(laptop) {
+		height: 400px;
+	}
+
+	@include bp(desktop) {
+		padding: 0 .5rem;
+	}
 }

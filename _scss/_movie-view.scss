@@ -1,11 +1,53 @@
+/**
+* MOVIE DETAIL SCREEN
+*/
+
 .movie--view {
-	background: #1f192a;
-	padding-bottom: 2rem;
+
+	@include bp(laptop) {
+		margin-top: 5rem;
+		padding-left: .5rem;
+		padding-right: .5rem;
+	}
 	
+	&_inner {
+		background: $purple-color;
+		padding-bottom: 2rem;
+
+		@include bp(laptop) {
+			position: relative;
+			border-radius: .5rem .5rem 0 0;
+			overflow: hidden;
+		}
+	}
+
+	&_excerpt {
+		display: none;
+
+		@include bp(laptop) {
+			display: block;
+			position: relative;
+			z-index: 3;
+			max-width: 45%;
+			padding-left: 5rem;
+
+			color: #fff;
+			line-height: 1.5;
+		}
+	}
+
+	/**
+	 * Backdrop
+	 */
 	&_backdrop {
 		height: 80vh;
 		position: relative;
 		background: $dark-color;
+
+		@include bp(laptop) {
+			height: 35rem;
+			overflow: hidden;
+		}
 		
 		&:after {
 			content: "";
@@ -20,6 +62,19 @@
 			background: -webkit-linear-gradient(top,  rgba(32,25,44,0) 0%,rgba(32,25,44,0.8) 100%);
 			background: linear-gradient(to bottom,  rgba(32,25,44,0) 0%,rgba(32,25,44,0.8) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0020192c', endColorstr='#b320192c',GradientType=0 );
+
+			@include bp(laptop) {
+				height: 160%;
+				width: 160%;
+				bottom: auto;
+				top: 50%;
+				transform: translate(0, -50%);
+
+				background: -moz-radial-gradient(center, ellipse cover,  rgba($purple-color,0) 0%, rgba($purple-color,0) 1%, rgba($purple-color,0.89) 60%, rgba($purple-color,1) 100%);
+				background: -webkit-radial-gradient(center, ellipse cover,  rgba($purple-color,0) 0%,rgba($purple-color,0) 1%,rgba($purple-color,0.89) 60%,rgba($purple-color,1) 100%);
+				background: radial-gradient(ellipse at center,  rgba($purple-color,0) 0%,rgba($purple-color,0) 1%,rgba($purple-color,0.89) 60%,rgba($purple-color,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001f192a', endColorstr='#1f192a',GradientType=1 );
+			}
 		}
 		
 		& .movie--backdrop_picture {
@@ -33,6 +88,10 @@
 			background-repeat: no-repeat;
 			background-position: 50% 50%;
 			background-size: cover;
+
+			@include bp(laptop) {
+				opacity: 1;
+			}
 		}
 		
 		& .btn--watchTrailer {
@@ -46,6 +105,11 @@
 			display: block;
 			text-align: center;
 			text-decoration: none;
+			transition: .25s;
+
+			@include bp(laptop) {
+				display: none;
+			}
 			
 			& span {
 				margin-top: 1rem;
@@ -57,6 +121,42 @@
 				font-weight: 700;
 				font-size: .9rem;
 			}
+		}
+		
+		& .movie--backdrop_trailer {
+			display: none;
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			left: 50%;
+			z-index: -40;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+			opacity: 0;
+			transition: .3s;
+			transition-delay: .25s;
+
+			@include bp(laptop) {
+				width: 50%;
+			}
+
+			&[data-show="true"] {
+				display: block;
+			}
+		}
+		
+		& .btn--closeTrailer {
+			position: absolute;
+			left: 50%;
+			bottom: -4rem;
+			transform: translate(-50%, 0);
+			background: none;
+
+			text-transform: uppercase;
+			letter-spacing: .1rem;
+			text-align: center;
+			font-weight: 700;
+			font-size: .9rem;
 		}
 	}
 	
@@ -75,6 +175,22 @@
 		left: 20px;
 		z-index: 3;
 		font-size: 1.9rem;
+		transition: .25s;
+
+		@include bp(tablet) {
+			letter-spacing: .2rem;
+		}
+
+		@include bp(laptop) {
+			position: relative;
+			margin-left: 5rem;
+			margin-top: 5rem;
+			left: auto;
+			bottom: auto;
+
+			text-align: left;
+			font-size: 2.8rem;
+		}
 	}
 	
 	&_poster {
@@ -84,20 +200,43 @@
 		right: 20px;
 		z-index: 4;
 		transform: translate(0, 3.5rem);
+		transition: .25s;
+		transition-delay: .1s;
 		
 		& img {
 			max-width: 100%;
 			box-shadow: 0 .5rem 1rem rgba(#000, .35);
+		}
+
+		@include bp(laptop) {
+			max-width: 10rem;
+			transform: translate(0, 0);
+			position: static;
+			float: right;
+			margin-left: 2rem;
+
+			& img {
+				box-shadow: 0 .5rem 1.5rem rgba(#000, .45);
+			}
 		}
 	}
 	
 	&_content {
 		padding-left: 20px;
 		padding-right: 20px;
+
+		@include bp(laptop) {
+			padding: 3rem 5rem;
+		}
 	}
 	
 	&_meta {
 		margin: 2rem auto;
+
+		@include bp(laptop) {
+			width: 75%;
+			margin-left: 0;
+		}
 		
 		& ul {
 			margin: 0;
@@ -111,13 +250,22 @@
 	}
 	
 	&_desc {
+		clear: both;
 		line-height: 1.5;
 	}
 	
+	/**
+	 * Actors
+	 */
 	&_actors {
 		margin: 2rem 0;
 		padding: 2rem 20px;
 		background: #191323;
+
+		@include bp(laptop) {
+			margin: 0;
+			padding: 3rem 5rem;
+		}
 		
 		& h2 {
 			margin-top: 0;
@@ -127,6 +275,12 @@
 			display: block;
 			list-style-type: none;
 			text-align: center;
+			
+			@include bp(laptop) {
+				width: 20%;
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
 		}
 		& .actor--thumb_picture {
 			display: block;
@@ -150,21 +304,40 @@
 		}
 	}
 	
+	/**
+	 * Videos
+	 */
 	&_videos {
+		display: none;
 		padding-left: 20px;
 		padding-right: 20px;
+
+		@include bp(laptop) {
+			padding: 3rem 5rem;
+		}
 		
 		& .iframe--container {
 			box-shadow: 0 .5rem 1rem rgba(#000, .35);
 		}
+
+		&[data-show="true"] {
+			display: block;
+		}
 	}
 	
+	/**
+	 * Add to Seen button
+	 */
 	& .btn--addToSeen {
 		margin-top: 1rem;
 		background: none;
 		color: #484157;
 		border-color: #484157;
 		border-width: 3px;
+
+		@include bp(laptop) {
+			margin-top: 0;
+		}
 		
 		& span {
 			display: inline-block;
@@ -180,31 +353,33 @@
 			background: url("/img/icon_addToSeen.svg") 0 50% no-repeat;
 			background-size: 16px auto;
 		}
-	
-	}
-	.btn--seen {
-		margin-top: 1rem;
-		background: #e80269;
-		color: #fff;
-		border-color: #e80269;
-		border-width: 3px;
 		
-		& span {
-			display: inline-block;
-			vertical-align: middle;
-		}
-		&:before {
-			content: "";
-			display: inline-block;
-			vertical-align: middle;
-			margin-right: .25rem;
-			width: 18px;
-			height: 20px;
-			background: url("/img/icon_seen.svg") 0 50% no-repeat;
-			background-size: 16px auto;
+		&[data-seen="true"] {
+			background: #e80269;
+			color: #fff;
+			border-color: #e80269;
+			border-width: 3px;
+
+			& span {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			&:before {
+				content: "";
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: .25rem;
+				width: 18px;
+				height: 20px;
+				background: url("/img/icon_seen.svg") 0 50% no-repeat;
+				background-size: 16px auto;
+			}
 		}
 	}
 	
+	/**
+	 * Remove button
+	 */
 	&_remove {
 		margin: 2rem 20px 0;
 		padding-top: 2rem;
@@ -214,6 +389,36 @@
 		& .btn--removeMovie {
 			background: none;
 			letter-spacing: .1rem;
+		}
+	}
+	
+	
+	/**
+	 * Video trailer in backdrop
+	 */
+	&[data-trailer="is-visible"] {
+		background: darken(#1f192a, 2%);
+		
+		& .btn--watchTrailer {
+			transform: translate(-50%, -25%);
+			opacity: 0;
+		}
+		& .movie--backdrop_trailer {
+			opacity: 1;
+			pointer-events: all;
+			z-index: 4;
+			box-shadow: 0 .5rem 1.5rem rgba(#000, .3);
+		}
+		& .movie--backdrop_picture {
+			opacity: .1;
+		}
+		& .movie--view_content {
+			opacity: .3;
+		}
+		& .movie--view_title, 
+		& .movie--view_poster {
+			transform: translate(0, 50%);
+			opacity: 0;
 		}
 	}
 }

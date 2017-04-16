@@ -1,13 +1,18 @@
 $main-color: #8f859b;
 $dark-color: #0f0915;
 $red-color: #e80269;
+$purple-color: #1f192a;
 
+
+@import "mixins";
 @import "normalize";
 @import "layout";
 @import "form";
+@import "swiper";
 @import "movies-list";
 @import "movie-card";
 @import "movie-card-latest";
 @import "movie-view";
 @import "movie-search";
 @import "login-screen";
+@import "remove-modal";

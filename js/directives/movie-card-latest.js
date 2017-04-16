@@ -1,5 +1,5 @@
 /**
-* App Directive :: Template pour le film le plus récent
+* App Directive :: Latest movie template
 */
 angular
 .module('moviesList')

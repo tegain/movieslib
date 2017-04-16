@@ -3,13 +3,44 @@
 }
 
 .swiper-container {
+    overflow: visible;
+}
+
+/* GRID */
+.movies--list {
+
+    @include bp(laptop) {
+
+        & .swiper-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        }
+    }
+    
+}
+
+/* SWIPER */
+.swiper-container-horizontal {
 	width: 100%;
-	height: 55vw;
+    overflow: hidden;
+
+    &.movies--list {
+        height: 55vw;
+
+        @include bp(tablet) {
+            height: 37vw; // Garde un ratio correct par rapport à la largeur des slides
+        }
+    }
 	
 	& .swiper-slide {
         width: 40%;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include bp(tablet) {
+            width: 25%;
+        }
     }
 }

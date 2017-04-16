@@ -6,9 +6,9 @@
 	<div>
 		<h1>Ajouter un film</h1>
 	
-		<form name="searchForm" ng-submit="searchMovie(query)" novalidate>
+		<form name="form.search" ng-submit="searchMovie(query)" novalidate>
 			<div class="form--row">
-				<input type="text" name="searchInput" ng-model="query" id="search-field" class="search-field">
+				<input type="text" name="searchInput" ng-model="query" id="search-field" class="search-field" autofocus>
 				<label for="search-field">Chercher un film</label>
 			</div>
 			<div class="form--submit">
@@ -19,15 +19,20 @@
 		</form>
 
 		<div class="movie--search_results">
-			<article ng-repeat="result in searchMovie.results" data-movie-id="{{result.id}}">
-				<img ng-src="{{ config.base_url + config.poster_sizes[2] + result.poster_path }}" alt="">
-				<h3>{{ result.title }}</h3>
-				<span>{{ result.release_date | date: 'yyyy' }}</span>
-				<div>{{ result.overview | limitTo: 140 }}<span ng-if="result.overview.length > 140">...</span></div>
+			<article class="movie--result" ng-repeat="result in searchResults.results" data-movie-id="{{result.id}}" data-movie-title="{{ result.title }}">
+				<div class="movie--result_picture">
+					<img ng-src="{{ config.base_url + config.poster_sizes[3] + result.poster_path }}" alt="">
+				</div>
 
-				<!-- Add -->
-				<div>
-					<button ng-click="addMovie(result.id)">Ajouter</button>
+				<div class="movie--result_content">
+					<h2 class="movie--result_title">{{ result.title }}</h2>
+					<span class="movie--result_date">{{ result.release_date | date: 'yyyy' }}</span>
+					<div class="movie--result_excerpt"><p>{{ result.overview | limitTo: 140 }}<span ng-if="result.overview.length > 140">...</span></p></div>
+
+					<!-- Add -->
+					<div class="movie--result_actions">
+						<button ng-click="addMovie(result.id)" class="movie--result_add button">Ajouter</button>
+					</div>
 				</div>
 			</article>
 		</div>

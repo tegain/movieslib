@@ -8,7 +8,7 @@
 	
 	<div class="movies--list swiper-container">
 		<div class="swiper-wrapper">
-			<article class="movie--card swiper-slide" ng-repeat="movie in movies">
+			<article class="movie--card swiper-slide" ng-repeat="movie in movies" data-seen="{{ getSeenInfos(movie.id) }}">
 				<movie-card></movie-card>
 			</article>
 		</div>
